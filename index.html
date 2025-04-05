@@ -5,10 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailwind CSS Project</title>
     <link href="./dist/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .bg-transition {
+      transition: background-image 1s ease-in-out;
+    }
+    @font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+  }
+  </style>
 </head>
-<body>
-    <h1 class="text-3xl font-bold text-center mt-8 text-blue-600 ">
-        Welcome to My Tailwind CSS Project
-    </h1>
-</body>
+<body class="bg-black text-white">
+
+    <!-- Carousel Banner -->
+   <main>
+         <div class="page1 h-screen w-full bg-white ">
+            <div id="carousel" class="relative h-[90%] w-full bg-cover bg-center bg-transition" style="background-image: url('assets/image1.jpg');">
+                <!-- Dark Overlay -->
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            
+                <nav class="z-20 hidden md:flex flex gap-[160px] items-center space-x-[25vw] text-white text-lg font-medium absolute top-[12%] left-[50%] transform -translate-x-1/2 -translate-y-1/2">
+
+                      <div class="left">
+                        <div class="flex items-center gap-[40px]">
+                            <button id="menu-btn" class="text-white focus:outline-none">
+                                <!-- Hamburger Icon SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                                  stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                              </button>
+                            <img src="assets/logo.png" alt="Logo" class="h-[65px] w-auto mr-3 rounded-full " />
+                            
+                          </div>
+                      </div>
+
+                   <div class="right flex  gap-[40px] text-sm">
+                    <a href="#" class="hover:text-purple-400 transition font-montserrat">HOME</a>
+                    <a href="#" class="hover:text-purple-400 transition">ABOUT</a>
+                    <a href="#" class="hover:text-purple-400 transition">SERVICES</a>
+                    <a href="#" class="hover:text-purple-400 transition">CONTACT</a>
+                   </div>
+                  </nav>
+
+                 
+                <!-- Content Overlay -->
+                <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+                  <h1 class="text-4xl md:text-6xl font-bold">Partner with Melodia Event Management in Kerala</h1>
+                  <p class="mt-4 text-lg md:text-xl">KERALA'S #1 EXCLUSIVE EVENT COMPANY</p>
+                  <button class="mt-6 px-6 py-3 bg-purple-500 text-white rounded-full hover:bg-purple-600 transition">
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+         </div>
+
+
+   </main>
+  
+    <script src="script.js"></script>
+  
+  </body>
 </html>
