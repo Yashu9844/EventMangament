@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailwind CSS Project</title>
+
+    <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link href="./dist/output.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -30,51 +34,65 @@
 <body class="bg-black text-white">
 
     <!-- Carousel Banner -->
-   <main>
-         <div class="page1 h-screen w-full bg-white ">
-            <div id="carousel" class="relative h-[90%] w-full bg-cover bg-center bg-transition" style="background-image: url('assets/image1.jpg');">
-                <!-- Dark Overlay -->
-                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            
-                <nav class="z-20 hidden md:flex flex gap-[160px] items-center space-x-[25vw] text-white text-lg font-medium absolute top-[12%] left-[50%] transform -translate-x-1/2 -translate-y-1/2">
-
-                      <div class="left">
-                        <div class="flex items-center gap-[40px]">
-                            <button id="menu-btn" class="text-white focus:outline-none">
-                                <!-- Hamburger Icon SVG -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
-                                  stroke="currentColor" stroke-width="2">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4 6h16M4 12h16M4 18h16" />
-                                </svg>
-                              </button>
-                            <img src="assets/logo.png" alt="Logo" class="h-[65px] w-auto mr-3 rounded-full " />
-                            
-                          </div>
-                      </div>
-
-                   <div class="right flex  gap-[40px] text-sm">
-                    <a href="#" class="hover:text-purple-400 transition font-montserrat">HOME</a>
-                    <a href="#" class="hover:text-purple-400 transition">ABOUT</a>
-                    <a href="#" class="hover:text-purple-400 transition">SERVICES</a>
-                    <a href="#" class="hover:text-purple-400 transition">CONTACT</a>
-                   </div>
-                  </nav>
-
-                 
-                <!-- Content Overlay -->
-                <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-                  <h1 class="text-4xl md:text-6xl font-bold">Partner with Melodia Event Management in Kerala</h1>
-                  <p class="mt-4 text-lg md:text-xl">KERALA'S #1 EXCLUSIVE EVENT COMPANY</p>
-                  <button class="mt-6 px-6 py-3 bg-purple-500 text-white rounded-full hover:bg-purple-600 transition">
-                    Contact Us
-                  </button>
-                </div>
+    <main>
+        <div class="page1 min-h-screen w-full bg-white relative">
+          <!-- Background Image -->
+          <div id="carousel" class="relative h-[90vh] w-full bg-cover bg-center bg-transition" style="background-image: url('assets/w3.jpg');">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    
+            <!-- Navbar -->
+            <nav class="z-20 flex items-center justify-between px-6 py-4 md:px-[10vw] absolute w-full top-0 text-white">
+              <!-- Left: Logo + Hamburger -->
+              <div class="flex items-center gap-4">
+                <button id="menu-btn" class="text-white md:hidden focus:outline-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
               </div>
-         </div>
+    
+              <!-- Right: Desktop Nav -->
+              <div class="hidden md:flex gap-10 text-sm font-montserrat">
+                <a href="#" class="hover:text-purple-400 transition">HOME</a>
+                <a href="#" class="hover:text-purple-400 transition">ABOUT</a>
+                <a href="#" class="hover:text-purple-400 transition">SERVICES</a>
+                <a href="#" class="hover:text-purple-400 transition">CONTACT</a>
+              </div>
+            </nav>
+    
+            <!-- Mobile Nav -->
+            <div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-black bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
+              <a href="#" class="block hover:text-purple-400">HOME</a>
+              <a href="#" class="block hover:text-purple-400">ABOUT</a>
+              <a href="#" class="block hover:text-purple-400">SERVICES</a>
+              <a href="#" class="block hover:text-purple-400">CONTACT</a>
+            </div>
+    
+            <!-- Main Content (Left aligned on all screens) -->
+            <div class="relative z-10 flex flex-col items-start justify-center h-full px-6 sm:px-12 md:px-[10.3vw] text-left">
+              <p class="text-sm sm:text-base md:text-lg text-gray-200 mb-2 px-1">From Concept to Celebration — We Do It All</p>
+              <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold py-2">Your Event, Our Expertise</h1>
+              <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold py-2">Crafting Unforgettable Experiences</h1>
+              <p class="text-xs sm:text-sm md:text-base text-gray-300 mt-2 px-1">Book With the Best — Dream Event Management</p>
+    
+              <!-- Social Icons (left-aligned) -->
+              <div class="flex gap-4 mt-6 text-xl sm:text-2xl text-white px-2">
+                <a href="#"><i class="fab fa-instagram hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-youtube hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-facebook hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-linkedin hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-twitter hover:text-purple-400"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+   <!-- Font Awesome CDN -->
 
 
-   </main>
   
     <script src="script.js"></script>
   
