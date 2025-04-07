@@ -28,3 +28,29 @@
         menuBtn.addEventListener('click', () => {
           mobileMenu.classList.toggle('hidden');
         });
+
+
+        const swiper = new Swiper('.swiper-container', {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 1.2,
+            },
+            768: {
+              slidesPerView: 2.3,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }
+        });
+
+        scrollCue.init({
+          interval: -200, // triggers earlier as it scrolls into view
+          duration: 800,  // animation duration
+        });
