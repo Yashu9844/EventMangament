@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corporate Event</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .bg-transition {
+      transition: background-image 1s ease-in-out;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- ✅ Navbar -->
+  <nav class="z-20 flex items-center justify-between px-6 py-4 md:px-[10vw] absolute w-full top-0 text-white">
+    <!-- Left: Logo + Hamburger -->
+    <div class="flex items-center gap-4">
+      <button id="menu-btn" class="text-white md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+    </div>
+
+    <!-- Right: Desktop Nav -->
+    <div class="hidden md:flex gap-10 text-sm font-montserrat">
+      <a href="#" class="hover:text-purple-400 transition">HOME</a>
+      <a href="#" class="hover:text-purple-400 transition">ABOUT</a>
+      <a href="#" class="hover:text-purple-400 transition">SERVICES</a>
+      <a href="#" class="hover:text-purple-400 transition">CONTACT</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-black bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
+    <a href="#" class="block hover:text-purple-400">HOME</a>
+    <a href="#" class="block hover:text-purple-400">ABOUT</a>
+    <a href="#" class="block hover:text-purple-400">SERVICES</a>
+    <a href="#" class="block hover:text-purple-400">CONTACT</a>
+  </div>
+
+  <main>
+    <!-- Page 1 -->
+    <div class="page1 w-full relative">
+      <!-- Background Image (half height) -->
+      <div id="carousel" class="relative h-[35vh] w-full bg-cover bg-center bg-transition" style="background-image: url('assets/w3.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-start justify-start px-10 pt-10 ">
+          <!-- Enquire Button (left side) -->
+          <button 
+  id="openModal" 
+  class="absolute bottom-[2vw] left-[10vw] px-6 py-3 md:px-6 md:py-3 px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white text-sm md:text-lg rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg
+    mb-[4vw] md:mb-0"
+>
+  Enquire Now
+</button>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Enquiry Form Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+      <div class="bg-white max-w-5xl w-full rounded-xl overflow-auto max-h-[90vh] shadow-xl p-6 relative">
+        <!-- Close Button -->
+        <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl">&times;</button>
+        
+        <!-- Enquiry Form Content -->
+        <div class="flex flex-col md:flex-row w-full">
+          <!-- Contact Info -->
+          <div class="md:w-1/2 p-6">
+            <h2 class="text-3xl font-bold mb-2">Enquiry Us</h2>
+            <p class="mb-4 text-gray-600">Feel free to use the form or drop us an email. Old-fashioned phone calls work too.</p>
+            <div class="space-y-4 text-gray-700">
+              <div class="flex items-center gap-3"><span>📞</span><span>484.324.2400</span></div>
+              <div class="flex items-center gap-3"><span>📧</span><span>info@mediaproper.com</span></div>
+              <div class="flex items-start gap-3">
+                <span>📍</span>
+                <div>
+                  <p>15 West 3rd St.</p>
+                  <p>Media, Pa. 19063</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div class="md:w-1/2 p-6">
+            <form class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" placeholder="First Name" class="p-3 border border-purple-300 rounded-lg w-full" />
+                <input type="text" placeholder="Last Name" class="p-3 border border-purple-300 rounded-lg w-full" />
+              </div>
+              <input type="email" placeholder="Email" class="p-3 border border-purple-300 rounded-lg w-full" />
+              <input type="tel" placeholder="Phone (optional)" class="p-3 border border-purple-300 rounded-lg w-full" />
+              <textarea placeholder="Your Message" class="p-3 border border-purple-300 rounded-lg w-full h-32"></textarea>
+              <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- page2 -->
+    <section class="py-20 bg-gray-100" id="services">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold  mb-12">Our Corporate Event Services</h2>
+    
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service Card 1 -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-microphone-alt"></i></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:text-indigo-600 transition">Professional Hosting</h3>
+            <p class="text-gray-600 mb-4">Engaging emcees and hosts who keep your corporate crowd entertained and on schedule.</p>
+            <button class="enquire-btn bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">Enquire Now</button>
+          </div>
+    
+          <!-- Service Card 2 -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div class="text-green-500 text-4xl mb-4"><i class="fas fa-utensils"></i></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:text-green-600 transition">Catering & Refreshments</h3>
+            <p class="text-gray-600 mb-4">Customized menus and refreshments tailored to your event theme and guest preferences.</p>
+            <button class="enquire-btn bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">Enquire Now</button>
+          </div>
+    
+          <!-- Service Card 3 -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div class="text-yellow-500 text-4xl mb-4"><i class="fas fa-lightbulb"></i></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:text-yellow-500 transition">Audio-Visual Setup</h3>
+            <p class="text-gray-600 mb-4">State-of-the-art AV equipment with technical support to ensure seamless presentations and performances.</p>
+            <button class="enquire-btn bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition">Enquire Now</button>
+          </div>
+    
+          <!-- Service Card 4 -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div class="text-red-500 text-4xl mb-4"><i class="fas fa-users-cog"></i></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:text-red-500 transition">Event Management</h3>
+            <p class="text-gray-600 mb-4">Complete planning and coordination by our experienced event managers, ensuring a flawless experience.</p>
+            <button class="enquire-btn bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition">Enquire Now</button>
+          </div>
+    
+          <!-- Service Card 5 -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div class="text-blue-500 text-4xl mb-4"><i class="fas fa-camera-retro"></i></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-500 transition">Photography & Videography</h3>
+            <p class="text-gray-600 mb-4">Capture every moment of your event with professional photo and video coverage.</p>
+            <button class="enquire-btn bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">Enquire Now</button>
+          </div>
+    
+          <!-- Service Card 6 -->
+          <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div class="text-purple-600 text-4xl mb-4"><i class="fas fa-gifts"></i></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:text-purple-600 transition">Custom Branding</h3>
+            <p class="text-gray-600 mb-4">Personalized stage setups, banners, and gift hampers that align with your brand identity.</p>
+            <button class="enquire-btn bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <!-- ✅ Modal Script -->
+  <script src="script.js" >
+         
+  </script>
+    
+
+</body>
+</html>
