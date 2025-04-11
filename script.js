@@ -100,3 +100,15 @@ function galleryAnimation(){
       elements.forEach(el => observer.observe(el));
 }
 galleryAnimation();
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const faqItems = document.querySelectorAll('.group');
+  faqItems.forEach(item => {
+    window.addEventListener('scroll', () => {
+      if (item.getBoundingClientRect().top < window.innerHeight) {
+        item.classList.add('opacity-100');
+      }
+    });
+  });
+});
