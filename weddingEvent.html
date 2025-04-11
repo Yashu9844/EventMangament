@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corporate Event</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .bg-transition {
+      transition: background-image 1s ease-in-out;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <nav class="z-20 flex items-center justify-between px-6 py-4 md:px-[10vw] absolute w-full top-0 text-white">
+        <!-- Left: Logo + Hamburger -->
+        <div class="flex items-center gap-4">
+          <button id="menu-btn" class="text-white md:hidden focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+        </div>
+    
+        <!-- Right: Desktop Nav -->
+        <div class="hidden md:flex gap-10 text-sm font-montserrat">
+          <a href="/index.html" class="hover:text-purple-400 transition">HOME</a>
+          <a href="#" class="hover:text-purple-400 transition">ABOUT</a>
+          <a href="#" class="hover:text-purple-400 transition">SERVICES</a>
+          <a href="#" class="hover:text-purple-400 transition">CONTACT</a>
+        </div>
+      </nav>
+    
+      <!-- Mobile Nav -->
+      <div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-black bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
+        <a href="/index.html" class="block hover:text-purple-400">HOME</a>
+        <a href="#" class="block hover:text-purple-400">ABOUT</a>
+        <a href="#" class="block hover:text-purple-400">SERVICES</a>
+        <a href="#" class="block hover:text-purple-400">CONTACT</a>
+      </div>
+    <main>
+
+        <div class="page1 w-full relative">
+            <!-- Background Image (half height) -->
+            <div id="carousel" class="relative h-[35vh] w-full bg-cover bg-center bg-transition" style="background-image: url('assets/w3.jpg');">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-start justify-start px-10 pt-10 ">
+                <!-- Enquire Button (left side) -->
+                <button 
+        id="openModal" 
+        class="absolute bottom-[2vw] left-[10vw] px-6 py-3 md:px-6 md:py-3 px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white text-sm md:text-lg rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg
+          mb-[4vw] md:mb-0"
+      >
+        Enquire Now
+      </button>
+      
+                
+              </div>
+            </div>
+          </div>
+      
+          <!-- Enquiry Form Modal -->
+          <div id="modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+            <div class="bg-white max-w-5xl w-full rounded-xl overflow-auto max-h-[90vh] shadow-xl p-6 relative">
+              <!-- Close Button -->
+              <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl">&times;</button>
+              
+              <!-- Enquiry Form Content -->
+              <div class="flex flex-col md:flex-row w-full">
+                <!-- Contact Info -->
+                <div class="md:w-1/2 p-6">
+                  <h2 class="text-3xl font-bold mb-2">Enquiry Us</h2>
+                  <p class="mb-4 text-gray-600">Feel free to use the form or drop us an email. Old-fashioned phone calls work too.</p>
+                  <div class="space-y-4 text-gray-700">
+                    <div class="flex items-center gap-3"><span>📞</span><span>484.324.2400</span></div>
+                    <div class="flex items-center gap-3"><span>📧</span><span>info@mediaproper.com</span></div>
+                    <div class="flex items-start gap-3">
+                      <span>📍</span>
+                      <div>
+                        <p>15 West 3rd St.</p>
+                        <p>Media, Pa. 19063</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Contact Form -->
+                <div class="md:w-1/2 p-6">
+                  <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <input type="text" placeholder="First Name" class="p-3 border border-purple-300 rounded-lg w-full" />
+                      <input type="text" placeholder="Last Name" class="p-3 border border-purple-300 rounded-lg w-full" />
+                    </div>
+                    <input type="email" placeholder="Email" class="p-3 border border-purple-300 rounded-lg w-full" />
+                    <input type="tel" placeholder="Phone (optional)" class="p-3 border border-purple-300 rounded-lg w-full" />
+                    <textarea placeholder="Your Message" class="p-3 border border-purple-300 rounded-lg w-full h-32"></textarea>
+                    <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+
+          <!-- page2 -->
+          <section class="py-20 bg-gray-100" id="services">
+            <div class="max-w-7xl mx-auto px-6">
+              <h2 class="text-3xl md:text-4xl font-bold mb-12">Our Wedding Event Services</h2>
+          
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                  <div class="text-pink-600 text-4xl mb-4"><i class="fas fa-heart"></i></div>
+                  <h3 class="text-xl font-semibold mb-2 group-hover:text-pink-600 transition">Wedding Planning</h3>
+                  <p class="text-gray-600 mb-4">Comprehensive planning to ensure your big day is smooth, joyful, and memorable.</p>
+                  <button class="enquire-btn bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 transition">Enquire Now</button>
+                </div>
+          
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                  <div class="text-yellow-600 text-4xl mb-4"><i class="fas fa-concierge-bell"></i></div>
+                  <h3 class="text-xl font-semibold mb-2 group-hover:text-yellow-600 transition">Venue & Decor</h3>
+                  <p class="text-gray-600 mb-4">Elegant venues and breathtaking decorations tailored to your theme and vision.</p>
+                  <button class="enquire-btn bg-yellow-600 text-white px-4 py-2 rounded-md hover:bg-yellow-700 transition">Enquire Now</button>
+                </div>
+          
+                <!-- Service Card 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                  <div class="text-red-500 text-4xl mb-4"><i class="fas fa-music"></i></div>
+                  <h3 class="text-xl font-semibold mb-2 group-hover:text-red-500 transition">Live Music & Entertainment</h3>
+                  <p class="text-gray-600 mb-4">Top-tier DJs, live bands, and performers to elevate your celebration.</p>
+                  <button class="enquire-btn bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition">Enquire Now</button>
+                </div>
+          
+                <!-- Service Card 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                  <div class="text-green-500 text-4xl mb-4"><i class="fas fa-utensils"></i></div>
+                  <h3 class="text-xl font-semibold mb-2 group-hover:text-green-500 transition">Gourmet Catering</h3>
+                  <p class="text-gray-600 mb-4">Delicious menus curated to please every guest, with both traditional and modern cuisine.</p>
+                  <button class="enquire-btn bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">Enquire Now</button>
+                </div>
+          
+                <!-- Service Card 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                  <div class="text-blue-500 text-4xl mb-4"><i class="fas fa-camera"></i></div>
+                  <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-500 transition">Photography & Videography</h3>
+                  <p class="text-gray-600 mb-4">Capture every heartfelt moment with cinematic photos and videos of your wedding.</p>
+                  <button class="enquire-btn bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">Enquire Now</button>
+                </div>
+          
+                <!-- Service Card 6 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                  <div class="text-purple-600 text-4xl mb-4"><i class="fas fa-gift"></i></div>
+                  <h3 class="text-xl font-semibold mb-2 group-hover:text-purple-600 transition">Custom Gifting & Favors</h3>
+                  <p class="text-gray-600 mb-4">Thoughtful, customized wedding favors to thank your guests and make them feel special.</p>
+                  <button class="enquire-btn bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition">Enquire Now</button>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+<!-- 
+
+gallery -->
+      <section class="py-12 px-4 max-w-7xl mx-auto">
+        <!-- Section Title -->
+        <h2 class="text-3xl font-bold  mb-10">Wedding Management Gallery</h2>
+  
+        <!-- Image Gallery -->
+        <div class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4 cursor-pointer">
+          
+          <!-- Image 1 -->
+          <img src="/assets/un1.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 2 -->
+          <img src="/assets/un2.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 3 -->
+          <img src="/assets/un3.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 4 -->
+          <img src="/assets/un4.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 5 -->
+          <img src="/assets/un5.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 6 -->
+          <img src="/assets/w2.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 7 -->
+          <img src="/assets/un1.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 8 -->
+          <img src="/assets/un2.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 9 -->
+          <img src="/assets/un3.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 10 -->
+          <img src="/assets/un4.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 11 -->
+          <img src="/assets/un5.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 12 -->
+          <img src="/assets/w1.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+          <!-- Image 13 -->
+          <img src="/assets/un1.jpg" class="rounded-lg w-full transition-all duration-300 transform hover:scale-105 cursor-pointer opacity-0 translate-y-10" />
+          
+        </div>
+      </section>
+          
+
+<!-- catalog -->
+
+<iframe src="flip.html" width="100%" height="1000px" style="border: none;"></iframe>
+
+
+
+
+      
+
+
+
+
+      
+      
+
+            <!--footer Section -->
+            <footer class="relative bg-cover bg-center text-white" style="background-image: url('/assets/ww1.jpg');">
+                <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+              
+                <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center">
+                  <!-- Logo -->
+                <div class="flex   gap-4 justify-center mb-4">
+                  
+                  <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+                  <h1 class="text-4xl font-bold mb-4 font-serif py-1">Dream Weave</h1>
+                </div>
+              
+                  <!-- Description -->
+                  <p class="max-w-3xl mx-auto text-sm sm:text-base leading-relaxed text-gray-300">
+                    Planning a full event has never been easier! Dream Weave Event Management, based in India, offers a wide range of services to make your events stress-free and memorable. From corporate events to destination weddings, we’ve got it all covered. Whether you’re planning a wedding or a celebration, we are here to help.
+                  </p>
+              
+                  <!-- Social Icons -->
+                  <div class="flex justify-center space-x-6 mt-6 text-white text-xl">
+                    <a href="#"><i class="fab fa-instagram hover:text-purple-400"></i></a>
+                    <a href="#"><i class="fab fa-youtube hover:text-purple-400"></i></a>
+                    <a href="#"><i class="fab fa-facebook hover:text-purple-400"></i></a>
+                    <a href="#"><i class="fab fa-linkedin hover:text-purple-400"></i></a>
+                    <a href="#"><i class="fab fa-twitter hover:text-purple-400"></i></a>
+                  </div>
+              
+                  <!-- Links Section -->
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-12 text-left text-sm text-gray-300 justify-center">
+                    <!-- Quick Links -->
+                    <div class="text-center sm:text-left">
+                      <h2 class="text-white font-semibold text-lg mb-4">QUICK LINKS</h2>
+                      <ul class="space-y-2">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Venues</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact</a></li>
+                      </ul>
+                    </div>
+              
+                    <!-- Services -->
+                    <div class="text-center sm:text-left">
+                      <h2 class="text-white font-semibold text-lg mb-4">SERVICES</h2>
+                      <ul class="space-y-2">
+                        <li><a href="#">Corporate Events</a></li>
+                        <li><a href="#">Wedding Planner</a></li>
+                        <li><a href="#">Music & Entertainment</a></li>
+                        <li><a href="#">Private Parties</a></li>
+                        <li><a href="#">Destination Wedding</a></li>
+                      </ul>
+                    </div>
+              
+                    <!-- Contact Info -->
+                    <div class="text-center sm:text-left">
+                      <h2 class="text-white font-semibold text-lg mb-4">CONTACT INFO</h2>
+                      <ul class="space-y-3">
+                        <li>
+                          <span class="block">Dream Weave Events</span>
+                          <span>1st Floor, MG Road, Bangalore, Karnataka 560001</span>
+                        </li>
+                        <li>
+                          <span class="block">Rathi Plaza, Anna Nagar</span>
+                          <span>Chennai, Tamil Nadu 600040</span>
+                        </li>
+                        <li>
+                          <span class="block">New Bel Road, Rajajinagar</span>
+                          <span>Hyderabad, Telangana 500081</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              
+                  <!-- Bottom -->
+                  <div class="mt-12 border-t border-gray-600 pt-6 text-gray-400 text-sm">
+                    © 2025 Dream Weave. All rights reserved.
+                  </div>
+                </div>
+              </footer>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
