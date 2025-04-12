@@ -112,3 +112,58 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
+
+
+
+
+const fadeUps = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("opacity-100", "translate-y-0");
+        entry.target.classList.remove("opacity-0", "translate-y-6");
+      }
+    });
+  },
+  {
+    threshold: 0.1,
+  }
+);
+
+fadeUps.forEach(el => {
+  el.classList.add("opacity-0", "translate-y-6", "transition-all", "duration-1000");
+  observer.observe(el);
+});
+
+
+
+function setupModalTwo() {
+  const closeModal = document.getElementById('closeModal');
+  const modal = document.getElementById('modal');
+
+  if (closeModal && modal) {
+    closeModal.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    const serviceButtons = document.querySelectorAll('.enquire-btn');
+    serviceButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
+  }
+}
+setupModalTwo();
