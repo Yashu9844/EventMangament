@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works - Event Planning</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .timeline-container {
+      position: relative;
+    }
+    .timeline-container::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #4f46e5;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 60px;
+    }
+    .timeline-content {
+      position: relative;
+      width: 45%;
+    }
+    .timeline-content.left {
+      left: 0;
+    }
+    .timeline-content.right {
+      left: 55%;
+    }
+    .timeline-dot {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: 50%;
+      top: 30px;
+      margin-left: -12px;
+      background-color: #4f46e5;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hover-scale:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Enhanced How It Works Section with Timeline -->
+
+  <script>
+    // Intersection Observer for fade-in animations
+   
+  </script>
+</body>
+</html>

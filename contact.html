@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    .bg-transition {
+      transition: background-image 1s ease-in-out;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+    } .timeline-container {
+      position: relative;
+    }
+    .timeline-container::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #4f46e5;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 60px;
+    }
+    .timeline-content {
+      position: relative;
+      width: 45%;
+    }
+    .timeline-content.left {
+      left: 0;
+    }
+    .timeline-content.right {
+      left: 55%;
+    }
+    .timeline-dot {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: 50%;
+      top: 30px;
+      margin-left: -12px;
+      background-color: #4f46e5;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hover-scale:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .map-container {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 0.75rem;
+    }
+    .map-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      z-index: 10;
+      animation: pinDrop 1s ease-in-out;
+    }
+    @keyframes pinDrop {
+      from { transform: translate(-50%, -300%); }
+      to { transform: translate(-50%, -100%); }
+    }
+
+
+    /* team section css */
+
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .stagger-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .team-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .team-card:hover .team-member-image {
+      transform: scale(1.05);
+    }
+    
+    .team-member-image {
+      transition: transform 0.5s ease;
+    }
+    
+    .social-icons {
+      transition: all 0.3s ease;
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    
+    .team-card:hover .social-icons {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .skill-bar {
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+    
+    .featured-tag {
+      position: absolute;
+      top: 20px;
+      right: -60px;
+      transform: rotate(45deg);
+      width: 200px;
+      text-align: center;
+      z-index: 10;
+    }
+    
+    /* Parallax effect */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Animated counter */
+    .counter-value {
+      display: inline-block;
+      animation: countUp 3s forwards;
+    }
+    
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Pulse effect for featured team member */
+    .pulse-effect {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+    }
+    
+    /* Team member hover info animation */
+    .info-reveal {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+    
+    .team-card:hover .info-reveal {
+      max-height: 200px;
+    }
+    
+    /* Custom scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #4f46e5;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+    <nav class="z-20 flex items-center justify-between px-6 py-4 md:px-[10vw] absolute w-full top-0 text-white">
+        <!-- Left: Logo + Hamburger -->
+        <div class="flex items-center gap-4">
+          <button id="menu-btn" class="text-white md:hidden focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+        </div>
+    
+        <!-- Right: Desktop Nav -->
+        <div class="hidden md:flex gap-10 text-sm font-montserrat">
+          <a href="/index.html" class="hover:text-purple-400 transition">HOME</a>
+          <a href="#" class="hover:text-purple-400 transition">ABOUT</a>
+          <a href="#" class="hover:text-purple-400 transition">SERVICES</a>
+          <a href="#" class="hover:text-purple-400 transition">CONTACT</a>
+        </div>
+      </nav>
+    
+      <!-- Mobile Nav -->
+      <div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-black bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
+        <a href="/index.html" class="block hover:text-purple-400">HOME</a>
+        <a href="#" class="block hover:text-purple-400">ABOUT</a>
+        <a href="#" class="block hover:text-purple-400">SERVICES</a>
+        <a href="#" class="block hover:text-purple-400">CONTACT</a>
+      </div>
+
+      <main>
+        
+
+        <div class="page1 w-full relative">
+            <!-- Background Image (half height) -->
+            <div id="carousel" class="relative h-[35vh] w-full bg-cover bg-center bg-transition" style="background-image: url('assets/w3.jpg');">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-start justify-start px-10 pt-10 ">
+                <!-- Enquire Button (left side) -->
+                <button 
+        id="openModal" 
+        class="absolute bottom-[2vw] left-[10vw] px-6 py-3 md:px-6 md:py-3 px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white text-sm md:text-lg rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg
+          mb-[4vw] md:mb-0"
+      >
+        Enquire Now
+      </button>
+      
+                
+              </div>
+            </div>
+          </div>
+      
+          <!-- Enquiry Form Modal -->
+          <div id="modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+            <div class="bg-white max-w-5xl w-full rounded-xl overflow-auto max-h-[90vh] shadow-xl p-6 relative">
+              <!-- Close Button -->
+              <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl">&times;</button>
+              
+              <!-- Enquiry Form Content -->
+              <div class="flex flex-col md:flex-row w-full">
+                <!-- Contact Info -->
+                <div class="md:w-1/2 p-6">
+                  <h2 class="text-3xl font-bold mb-2">Enquiry Us</h2>
+                  <p class="mb-4 text-gray-600">Feel free to use the form or drop us an email. Old-fashioned phone calls work too.</p>
+                  <div class="space-y-4 text-gray-700">
+                    <div class="flex items-center gap-3"><span>📞</span><span>484.324.2400</span></div>
+                    <div class="flex items-center gap-3"><span>📧</span><span>info@mediaproper.com</span></div>
+                    <div class="flex items-start gap-3">
+                      <span>📍</span>
+                      <div>
+                        <p>15 West 3rd St.</p>
+                        <p>Media, Pa. 19063</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Contact Form -->
+                <div class="md:w-1/2 p-6">
+                  <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <input type="text" placeholder="First Name" class="p-3 border border-purple-300 rounded-lg w-full" />
+                      <input type="text" placeholder="Last Name" class="p-3 border border-purple-300 rounded-lg w-full" />
+                    </div>
+                    <input type="email" placeholder="Email" class="p-3 border border-purple-300 rounded-lg w-full" />
+                    <input type="tel" placeholder="Phone (optional)" class="p-3 border border-purple-300 rounded-lg w-full" />
+                    <textarea placeholder="Your Message" class="p-3 border border-purple-300 rounded-lg w-full h-32"></textarea>
+                    <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+<!-- Contact Us Section -->
+<section id="contact-us" class="py-16 bg-gradient-to-b from-white to-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class=" mb-16 pl-[1.8vw] fade-in">
+        <h2 class="text-5xl font-bold mb-4 text-indigo-800">Contact Us</h2>
+        <p class="text-xl text-gray-600 max-w-3xl ">Get in touch with our team to start planning your perfect event</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <!-- Contact Information -->
+        <div class="bg-white p-8 rounded-xl shadow-lg fade-in h-full">
+          <h3 class="text-2xl font-bold text-indigo-700 mb-6">Get In Touch</h3>
+          
+          <div class="space-y-6">
+            <!-- Address -->
+            <div class="flex items-start">
+              <div class="bg-indigo-100 p-3 rounded-full mr-4 flex-shrink-0">
+                <i class="fas fa-map-marker-alt text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Our Location</h4>
+                <p class="text-gray-600">
+                  123 Event Plaza, Koramangala<br>
+                  Bangalore, Karnataka 560034<br>
+                  India
+                </p>
+              </div>
+            </div>
+            
+            <!-- Phone -->
+            <div class="flex items-start">
+              <div class="bg-indigo-100 p-3 rounded-full mr-4 flex-shrink-0">
+                <i class="fas fa-phone-alt text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Call Us</h4>
+                <p class="text-gray-600">
+                  <a href="tel:+918012345678" class="hover:text-indigo-600 transition duration-300">+91 80 1234 5678</a><br>
+                  <span class="text-sm text-gray-500">Monday-Friday, 9:00 AM - 6:00 PM IST</span>
+                </p>
+              </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="flex items-start">
+              <div class="bg-indigo-100 p-3 rounded-full mr-4 flex-shrink-0">
+                <i class="fas fa-envelope text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Email Us</h4>
+                <p class="text-gray-600">
+                  <a href="mailto:info@eventplanners.com" class="hover:text-indigo-600 transition duration-300">info@eventplanners.com</a><br>
+                  <a href="mailto:bookings@eventplanners.com" class="hover:text-indigo-600 transition duration-300">bookings@eventplanners.com</a>
+                </p>
+              </div>
+            </div>
+            
+            <!-- Social Media -->
+            <div class="flex items-start">
+              <div class="bg-indigo-100 p-3 rounded-full mr-4 flex-shrink-0">
+                <i class="fas fa-share-alt text-indigo-600 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Follow Us</h4>
+                <div class="flex space-x-4 mt-2">
+                  <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-full transition duration-300">
+                    <i class="fab fa-facebook-f w-5 h-5 flex items-center justify-center"></i>
+                  </a>
+                  <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-full transition duration-300">
+                    <i class="fab fa-instagram w-5 h-5 flex items-center justify-center"></i>
+                  </a>
+                  <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-full transition duration-300">
+                    <i class="fab fa-twitter w-5 h-5 flex items-center justify-center"></i>
+                  </a>
+                  <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-full transition duration-300">
+                    <i class="fab fa-linkedin-in w-5 h-5 flex items-center justify-center"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Business Hours -->
+          <div class="mt-10 pt-6 border-t border-gray-200">
+            <h4 class="font-semibold text-lg mb-3">Business Hours</h4>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex justify-between">
+                <span>Monday - Friday:</span>
+                <span class="font-medium">9:00 AM - 6:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Saturday:</span>
+                <span class="font-medium">10:00 AM - 4:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Sunday:</span>
+                <span class="font-medium">Closed</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Map and Form Column -->
+        <div class="space-y-8 fade-in">
+          <!-- Real Map with Bangalore Location -->
+          <div class="map-container shadow-lg overflow-hidden">
+            <!-- Using an iframe to embed a real map of Bangalore -->
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=77.55%2C12.92%2C77.65%2C13.02&amp;layer=mapnik&amp;marker=12.9716%2C77.5946"
+              width="100%"
+              height="400"
+              frameborder="0"
+              style="border:0"
+              allowfullscreen
+            ></iframe>
+          </div>
+          
+          <!-- Contact Form -->
+          <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="text-2xl font-bold text-indigo-700 mb-6">Send Us a Message</h3>
+            <form>
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                  <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="John Doe">
+                </div>
+                <div>
+                  <label for="email" class="block text-gray-700 mb-2">Your Email</label>
+                  <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="john@example.com">
+                </div>
+              </div>
+              <div class="mb-6">
+                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Event Inquiry">
+              </div>
+              <div class="mb-6">
+                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Tell us about your event..."></textarea>
+              </div>
+              <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- how it works section -->
+          <section id="how-it-works" class="py-16 bg-gradient-to-b from-gray-100 to-white">
+            <div class="max-w-7xl mx-auto px-4 ">
+              <h2 class="text-5xl font-bold mb-4 text-indigo-800 animate__animated animate__fadeIn">How It Works</h2>
+              <p class="text-xl text-gray-600 mb-16 max-w-3xl  animate__animated animate__fadeIn animate__delay-1s">Our streamlined process ensures your event is planned to perfection from start to finish.</p>
+              
+              <!-- Initial Steps Cards -->
+              <div class="grid md:grid-cols-3 gap-8 mb-24">
+                <!-- Step 1 -->
+                <div class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover-scale fade-in-section">
+                  <div class="text-indigo-600 text-4xl mb-4">
+                    <i class="fas fa-envelope-open-text"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-2">Submit Inquiry</h3>
+                  <p class="text-gray-600">Fill out our quick form with your event details or contact us directly to begin your event planning journey.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover-scale fade-in-section">
+                  <div class="text-indigo-600 text-4xl mb-4">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-2">Initial Consultation</h3>
+                  <p class="text-gray-600">Our team connects with you to understand your vision, budget, and specific requirements for your event.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover-scale fade-in-section">
+                  <div class="text-indigo-600 text-4xl mb-4">
+                    <i class="fas fa-file-contract"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-2">Proposal & Agreement</h3>
+                  <p class="text-gray-600">We'll prepare a detailed proposal outlining services, timeline, and pricing for your review and approval.</p>
+                </div>
+              </div>
+              
+              <!-- Detailed Timeline -->
+              <h3 class="text-3xl font-semibold mb-12 fade-in-section">Your Event Planning Timeline</h3>
+              
+              <div class="timeline-container">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content left p-6 bg-white rounded-xl shadow-lg fade-in-section">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">WEEK 1-2</span>
+                    <h4 class="text-xl font-bold mb-2">Strategic Planning</h4>
+                    <p class="text-gray-600">We'll develop a comprehensive event strategy, including theme development, venue selection, and vendor coordination.</p>
+                  </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content right p-6 bg-white rounded-xl shadow-lg fade-in-section">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">WEEK 3-6</span>
+                    <h4 class="text-xl font-bold mb-2">Logistics & Booking</h4>
+                    <p class="text-gray-600">We'll secure your venue, book entertainment, arrange catering, and coordinate with all necessary vendors and suppliers.</p>
+                  </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content left p-6 bg-white rounded-xl shadow-lg fade-in-section">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">WEEK 7-10</span>
+                    <h4 class="text-xl font-bold mb-2">Design & Production</h4>
+                    <p class="text-gray-600">Our team handles all design elements, from invitations to decor, ensuring a cohesive and stunning visual experience.</p>
+                  </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content right p-6 bg-white rounded-xl shadow-lg fade-in-section">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">WEEK 11-12</span>
+                    <h4 class="text-xl font-bold mb-2">Final Preparations</h4>
+                    <p class="text-gray-600">We confirm all details with vendors, finalize your timeline, and prepare contingency plans to ensure everything runs smoothly.</p>
+                  </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content left p-6 bg-white rounded-xl shadow-lg fade-in-section">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">EVENT DAY</span>
+                    <h4 class="text-xl font-bold mb-2">Execution & Management</h4>
+                    <p class="text-gray-600">Our on-site team manages every aspect of your event, allowing you to relax and enjoy your special occasion.</p>
+                  </div>
+                </div>
+                
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content right p-6 bg-white rounded-xl shadow-lg fade-in-section">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">POST-EVENT</span>
+                    <h4 class="text-xl font-bold mb-2">Follow-up & Evaluation</h4>
+                    <p class="text-gray-600">We'll gather feedback, provide a post-event report, and ensure all final details are addressed to your satisfaction.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Contact CTA -->
+              <div class="bg-indigo-100 p-8 rounded-2xl shadow-lg max-w-4xl mx-auto mt-24 fade-in-section">
+                <h3 class="text-3xl font-bold mb-4 text-indigo-800">Ready to Get Started?</h3>
+                <p class="text-lg mb-6">Contact our team today to begin planning your unforgettable event!</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                  <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    Contact Us
+                  </a>
+                  <a href="tel:555-123-4567" class="bg-white hover:bg-gray-100 text-indigo-600 font-bold py-3 px-8 rounded-full transition duration-300 flex items-center">
+                    <i class="fas fa-phone-alt mr-2"></i> 555-123-4567
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        
+
+          <!-- Team intro section -->
+          <section id="our-team" class="py-20 bg-gradient-to-b from-white to-indigo-50">
+            <div class="max-w-6xl mx-auto px-4">
+              <!-- Section Header with Animation -->
+              <div class=" mb-16 relative animate__animated animate__fadeIn">
+                <span class="inline-block bg-indigo-100 text-indigo-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">THE EXPERTS</span>
+                <h2 class="text-5xl font-bold mb-4 text-indigo-800">Meet Our Team</h2>
+               
+                <p class="text-xl text-gray-600 max-w-3xl ">Our exceptional team brings together decades of experience to make your events truly memorable</p>
+              </div>
+              
+              <!-- Team Stats Counter -->
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center stagger-item transition-shadow duration-300 hover:shadow-lg">
+                    <div class="text-indigo-600 text-4xl font-bold mb-2 counter-value">12+</div>
+                    <p class="text-gray-600">Years Experience</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center stagger-item transition-shadow duration-300 hover:shadow-lg">
+                    <div class="text-indigo-600 text-4xl font-bold mb-2 counter-value">250+</div>
+                    <p class="text-gray-600">Events Completed</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center stagger-item transition-shadow duration-300 hover:shadow-lg">
+                    <div class="text-indigo-600 text-4xl font-bold mb-2 counter-value">15</div>
+                    <p class="text-gray-600">Team Members</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center stagger-item transition-shadow duration-300 hover:shadow-lg">
+                    <div class="text-indigo-600 text-4xl font-bold mb-2 counter-value">98%</div>
+                    <p class="text-gray-600">Client Satisfaction</p>
+                </div>
+            </div>
+              
+              <!-- Featured Team Member -->
+              <div class="mb-16 stagger-item">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden pulse-effect">
+                  <div class="md:flex">
+                    <div class="md:w-1/3 relative">
+                      <div class="featured-tag bg-indigo-600 text-white py-1 font-semibold">Team Lead</div>
+                      <div class="h-full overflow-hidden">
+                        <img src="/assets/j2.png" alt="Team Lead" class="w-full h-full object-cover team-member-image">
+                      </div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                      <div class="uppercase tracking-wide text-indigo-600 font-semibold">Founder & Creative Director</div>
+                      <h3 class="text-3xl font-bold mt-2 mb-4">Priya Sharma</h3>
+                      <div class="flex mb-6">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800 mr-4 transition duration-300">
+                          <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800 mr-4 transition duration-300">
+                          <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800 transition duration-300">
+                          <i class="fab fa-instagram"></i>
+                        </a>
+                      </div>
+                      <p class="text-gray-600 mb-6">With over 15 years of experience in event planning and management, Priya leads our talented team with vision and creativity. Her expertise in transforming concepts into unforgettable experiences has earned her recognition throughout the industry.</p>
+                      
+                      <!-- Expertise Bars -->
+                      <div class="space-y-4">
+                        <div>
+                          <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Creative Direction</span>
+                            <span class="text-indigo-600 font-medium">98%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full skill-bar" data-width="98%"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Event Strategy</span>
+                            <span class="text-indigo-600 font-medium">95%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full skill-bar" data-width="95%"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Client Relations</span>
+                            <span class="text-indigo-600 font-medium">92%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full skill-bar" data-width="92%"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Team Grid -->
+              <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card bg-white rounded-xl shadow-md stagger-item relative">
+                  <div class="overflow-hidden">
+                    <img src="/assets/j1.png" alt="Team Member" class="w-full h-100 object-cover team-member-image">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900 to-transparent opacity-0 hover:opacity-70 transition-opacity duration-300 flex items-end">
+                        <div class="social-icons p-4 w-full flex justify-center space-x-4   transition duration-300">
+                            <a href="#"><i class="fab fa-instagram text-white text-2xl hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-linkedin text-2xl text-white hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-twitter text-2xl text-white hover:text-purple-400"></i></a>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Rajesh Kumar</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Venue Coordinator</p>
+                    <p class="text-gray-600 mb-3">Expert in venue selection and layout planning for events of all sizes.</p>
+                    <div class="info-reveal pt-3 border-t border-gray-100">
+                      <div class="flex items-center mb-2">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="text-gray-600 text-sm">MBA in Hospitality Management</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-briefcase"></i></span>
+                        <span class="text-gray-600 text-sm">8+ years of experience</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card bg-white rounded-xl shadow-md stagger-item relative">
+                  <div class="overflow-hidden">
+                    <img src="/assets/j4.png" alt="Team Member" class="w-full h-100 object-cover team-member-image">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900 to-transparent opacity-0 hover:opacity-70 transition-opacity duration-300 flex items-end">
+                        <div class="social-icons p-4 w-full flex justify-center space-x-4   transition duration-300">
+                            <a href="#"><i class="fab fa-instagram text-white text-2xl hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-linkedin text-2xl text-white hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-twitter text-2xl text-white hover:text-purple-400"></i></a>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Anita Desai</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Design Specialist</p>
+                    <p class="text-gray-600 mb-3">Creates breathtaking event aesthetics and themed decorations.</p>
+                    <div class="info-reveal pt-3 border-t border-gray-100">
+                      <div class="flex items-center mb-2">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="text-gray-600 text-sm">Bachelor in Interior Design</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-briefcase"></i></span>
+                        <span class="text-gray-600 text-sm">6+ years of experience</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card bg-white rounded-xl shadow-md stagger-item relative">
+                  <div class="overflow-hidden">
+                    <img src="assets/j3.png" alt="Team Member" class="w-full h-100 object-cover team-member-image">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900 to-transparent opacity-0 hover:opacity-70 transition-opacity duration-300 flex items-end">
+                        <div class="social-icons p-4 w-full flex justify-center space-x-4   transition duration-300">
+                            <a href="#"><i class="fab fa-instagram text-white text-2xl hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-linkedin text-2xl text-white hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-twitter text-2xl text-white hover:text-purple-400"></i></a>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Vikram Singh</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Logistics Manager</p>
+                    <p class="text-gray-600 mb-3">Ensures flawless coordination of all event elements.</p>
+                    <div class="info-reveal pt-3 border-t border-gray-100">
+                      <div class="flex items-center mb-2">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="text-gray-600 text-sm">MS in Operations Management</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-briefcase"></i></span>
+                        <span class="text-gray-600 text-sm">7+ years of experience</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-card bg-white rounded-xl shadow-md stagger-item relative">
+                  <div class="overflow-hidden">
+                    <img src="/assets/j5.png" alt="Team Member" class="w-full h-100 object-cover team-member-image">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900 to-transparent opacity-0 hover:opacity-70 transition-opacity duration-300 flex items-end">
+                        <div class="social-icons p-4 w-full flex justify-center space-x-4   transition duration-300">
+                            <a href="#"><i class="fab fa-instagram text-white text-2xl hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-linkedin text-2xl text-white hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-twitter text-2xl text-white hover:text-purple-400"></i></a>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Neha Gupta</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Client Relations</p>
+                    <p class="text-gray-600 mb-3">Your dedicated point of contact throughout the planning process.</p>
+                    <div class="info-reveal pt-3 border-t border-gray-100">
+                      <div class="flex items-center mb-2">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="text-gray-600 text-sm">BA in Communications</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-briefcase"></i></span>
+                        <span class="text-gray-600 text-sm">5+ years of experience</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Team Member 5 -->
+                <div class="team-card bg-white rounded-xl shadow-md stagger-item relative">
+                  <div class="overflow-hidden">
+                    <img src="/assets/j7.png" alt="Team Member" class="w-full h-100 object-cover team-member-image">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900 to-transparent opacity-0 hover:opacity-70 transition-opacity duration-300 flex items-end">
+                        <div class="social-icons p-4 w-full flex justify-center space-x-4   transition duration-300">
+                            <a href="#"><i class="fab fa-instagram text-white text-2xl hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-linkedin text-2xl text-white hover:text-purple-400"></i></a>
+                            <a href="#"><i class="fab fa-twitter text-2xl text-white hover:text-purple-400"></i></a>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Ravi Patel</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Technical Director</p>
+                    <p class="text-gray-600 mb-3">Manages audiovisual elements and technical production.</p>
+                    <div class="info-reveal pt-3 border-t border-gray-100">
+                      <div class="flex items-center mb-2">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="text-gray-600 text-sm">B.Tech in Electronics</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-briefcase"></i></span>
+                        <span class="text-gray-600 text-sm">9+ years of experience</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Team Member 6 -->
+                <div class="team-card bg-white rounded-xl shadow-md stagger-item relative">
+                  <div class="overflow-hidden">
+                    <img src="/assets/j6.png" alt="Team Member" class="w-full h-100 object-cover team-member-image">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900 to-transparent opacity-0 hover:opacity-70 transition-opacity duration-300 flex items-end">
+                      <div class="social-icons p-4 w-full flex justify-center space-x-4   transition duration-300">
+                        <a href="#"><i class="fab fa-instagram text-white text-2xl hover:text-purple-400"></i></a>
+                        <a href="#"><i class="fab fa-linkedin text-2xl text-white hover:text-purple-400"></i></a>
+                        <a href="#"><i class="fab fa-twitter text-2xl text-white hover:text-purple-400"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Maya Iyer</h3>
+                    <p class="text-indigo-600 font-medium mb-3">Catering Coordinator</p>
+                    <p class="text-gray-600 mb-3">Curates exceptional dining experiences for all events.</p>
+                    <div class="info-reveal pt-3 border-t border-gray-100">
+                      <div class="flex items-center mb-2">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="text-gray-600 text-sm">Diploma in Culinary Arts</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="text-indigo-600 mr-2"><i class="fas fa-briefcase"></i></span>
+                        <span class="text-gray-600 text-sm">7+ years of experience</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Join Our Team CTA -->
+              <div class="mt-20 bg-indigo-600 rounded-xl p-8 text-center text-white shadow-xl stagger-item overflow-hidden relative">
+                <!-- Animated Background Pattern -->
+                <div class="absolute inset-0 opacity-10">
+                  <div class="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -ml-20 -mt-20"></div>
+                  <div class="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full -mr-20 -mb-20"></div>
+                  <div class="absolute top-1/2 left-1/4 w-20 h-20 bg-white rounded-full"></div>
+                  <div class="absolute bottom-1/3 right-1/3 w-16 h-16 bg-white rounded-full"></div>
+                </div>
+                
+                <div class="relative z-10">
+                  <h3 class="text-3xl font-bold mb-4">Join Our Team</h3>
+                  <p class="text-indigo-100 max-w-2xl mx-auto mb-8">We're always looking for talented, passionate individuals to join our team of event planning professionals</p>
+                  <a href="#careers" class="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-full hover:bg-indigo-100 transition duration-300">
+                    View Open Positions
+                  </a>
+                </div>
+              </div>
+            </div>
+        </section>
+
+<!-- 
+        Faqs section -->
+        <section class="py-16 px-6 max-w-7xl mx-auto" id="faq">
+            <h2 class="text-3xl font-bold px-[1.5vw] mb-10">Corporate Event FAQs</h2>
+      
+            <div class="space-y-6">
+              <!-- FAQ Item 1 -->
+              <div class="bg-white shadow-lg rounded-lg p-6 group transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition">What services do you offer for corporate events?</h3>
+                  <span class="text-indigo-600 text-2xl group-hover:text-indigo-500">+</span>
+                </div>
+                <p class="text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">We offer a range of services including professional hosting, catering, audio-visual setups, photography, event management, and more.</p>
+              </div>
+      
+              <!-- FAQ Item 2 -->
+              <div class="bg-white shadow-lg rounded-lg p-6 group transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition">How can I request a quote for my event?</h3>
+                  <span class="text-indigo-600 text-2xl group-hover:text-indigo-500">+</span>
+                </div>
+                <p class="text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">You can easily request a quote by filling out the form on our website or by contacting our team directly via email.</p>
+              </div>
+      
+              <!-- FAQ Item 3 -->
+              <div class="bg-white shadow-lg rounded-lg p-6 group transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition">What is the duration of a typical corporate event?</h3>
+                  <span class="text-indigo-600 text-2xl group-hover:text-indigo-500">+</span>
+                </div>
+                <p class="text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Corporate events typically range from a few hours to a full day depending on the nature of the event and the services required.</p>
+              </div>
+      
+              <!-- FAQ Item 4 -->
+              <div class="bg-white shadow-lg rounded-lg p-6 group transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition">Can you customize the event according to our company's needs?</h3>
+                  <span class="text-indigo-600 text-2xl group-hover:text-indigo-500">+</span>
+                </div>
+                <p class="text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Yes, all our services are fully customizable to meet your specific requirements, from catering to branding and event coordination.</p>
+              </div>
+      
+              <!-- FAQ Item 5 -->
+              <div class="bg-white shadow-lg rounded-lg p-6 group transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition">What kind of technical support do you provide during the event?</h3>
+                  <span class="text-indigo-600 text-2xl group-hover:text-indigo-500">+</span>
+                </div>
+                <p class="text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">We provide full technical support including AV setup, live streaming assistance, and on-site technicians to ensure everything runs smoothly.</p>
+              </div>
+      
+              <!-- FAQ Item 6 -->
+              <div class="bg-white shadow-lg rounded-lg p-6 group transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition">Do you handle the logistics for corporate events?</h3>
+                  <span class="text-indigo-600 text-2xl group-hover:text-indigo-500">+</span>
+                </div>
+                <p class="text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Yes, our team manages everything from venue selection, transportation, event setup, to managing the schedule and coordinating with vendors.</p>
+              </div>
+      
+            </div>
+          </section>
+
+        <!-- footer -->
+
+        <footer class="relative bg-cover bg-center text-white" style="background-image: url('/assets/ww1.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+          
+            <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center">
+              <!-- Logo -->
+            <div class="flex   gap-4 justify-center mb-4">
+              
+              <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+              <h1 class="text-4xl font-bold mb-4 font-serif py-1">Dream Weave</h1>
+            </div>
+          
+              <!-- Description -->
+              <p class="max-w-3xl mx-auto text-sm sm:text-base leading-relaxed text-gray-300">
+                Planning a full event has never been easier! Dream Weave Event Management, based in India, offers a wide range of services to make your events stress-free and memorable. From corporate events to destination weddings, we’ve got it all covered. Whether you’re planning a wedding or a celebration, we are here to help.
+              </p>
+          
+              <!-- Social Icons -->
+              <div class="flex justify-center space-x-6 mt-6 text-white text-xl">
+                <a href="#"><i class="fab fa-instagram hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-youtube hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-facebook hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-linkedin hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-twitter hover:text-purple-400"></i></a>
+              </div>
+          
+              <!-- Links Section -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-12 text-left text-sm text-gray-300 justify-center">
+                <!-- Quick Links -->
+                <div class="text-center sm:text-left">
+                  <h2 class="text-white font-semibold text-lg mb-4">QUICK LINKS</h2>
+                  <ul class="space-y-2">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Venues</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </div>
+          
+                <!-- Services -->
+                <div class="text-center sm:text-left">
+                  <h2 class="text-white font-semibold text-lg mb-4">SERVICES</h2>
+                  <ul class="space-y-2">
+                    <li><a href="#">Corporate Events</a></li>
+                    <li><a href="#">Wedding Planner</a></li>
+                    <li><a href="#">Music & Entertainment</a></li>
+                    <li><a href="#">Private Parties</a></li>
+                    <li><a href="#">Destination Wedding</a></li>
+                  </ul>
+                </div>
+          
+                <!-- Contact Info -->
+                <div class="text-center sm:text-left">
+                  <h2 class="text-white font-semibold text-lg mb-4">CONTACT INFO</h2>
+                  <ul class="space-y-3">
+                    <li>
+                      <span class="block">Dream Weave Events</span>
+                      <span>1st Floor, MG Road, Bangalore, Karnataka 560001</span>
+                    </li>
+                    <li>
+                      <span class="block">Rathi Plaza, Anna Nagar</span>
+                      <span>Chennai, Tamil Nadu 600040</span>
+                    </li>
+                    <li>
+                      <span class="block">New Bel Road, Rajajinagar</span>
+                      <span>Hyderabad, Telangana 500081</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          
+              <!-- Bottom -->
+              <div class="mt-12 border-t border-gray-600 pt-6 text-gray-400 text-sm">
+                © 2025 Dream Weave. All rights reserved.
+              </div>
+            </div>
+          </footer>
+      </main>
+    <script src="script.js"></script>
+</body>
+</html>

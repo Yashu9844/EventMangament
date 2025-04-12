@@ -167,3 +167,101 @@ function setupModalTwo() {
   }
 }
 setupModalTwo();
+
+
+
+function howItWorksAnimation() {
+  document.addEventListener("DOMContentLoaded", function() {
+    const fadeElements = document.querySelectorAll('.fade-in-section');
+    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+}
+howItWorksAnimation();
+
+
+
+function teamIntroAnimation() {
+  document.addEventListener("DOMContentLoaded", function() {
+    // Animation for staggered items
+    const staggerItems = document.querySelectorAll('.stagger-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('is-visible');
+          }, index * 150); // Stagger effect with 150ms delay between items
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    staggerItems.forEach(item => {
+      observer.observe(item);
+    });
+    
+    // Skill bar animation
+    const skillBars = document.querySelectorAll('.skill-bar');
+    skillBars.forEach(bar => {
+      setTimeout(() => {
+        bar.style.width = bar.getAttribute('data-width');
+      }, 500);
+    });
+    
+    // Counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter-value');
+      const speed = 200;
+      
+      counters.forEach(counter => {
+        const target = counter.innerText;
+        counter.innerText = '0';
+        
+        const updateCount = () => {
+          // Only animate numeric counters
+          if (target.match(/^\d+\+?$/)) {
+            const numValue = parseInt(target);
+            const value = parseInt(counter.innerText);
+            const increment = Math.ceil(numValue / speed);
+            
+            if (value < numValue) {
+              counter.innerText = value + increment;
+              setTimeout(updateCount, 1);
+            } else {
+              counter.innerText = target;
+            }
+          } else {
+            counter.innerText = target;
+          }
+        };
+        
+        updateCount();
+      });
+    }
+    
+    // Trigger counter animation when in view
+    const counterSection = document.querySelector('.counter-value');
+    const counterObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateCounters();
+        counterObserver.unobserve(counterSection);
+      }
+    }, { threshold: 0.5 });
+    
+    if (counterSection) {
+      counterObserver.observe(counterSection);
+    }
+  });
+}
+teamIntroAnimation();
