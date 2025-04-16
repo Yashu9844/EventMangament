@@ -39,25 +39,49 @@
                 d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-    <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+      <a href="#"><img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
     </div>
-
+  
     <!-- Right: Desktop Nav -->
     <div class="hidden md:flex gap-10 text-sm font-montserrat">
       <a href="/index.html" class="hover:text-purple-400 transition">HOME</a>
-      <a href="#" class="hover:text-purple-400 transition">ABOUT</a>
-      <a href="#" class="hover:text-purple-400 transition">SERVICES</a>
-      <a href="#" class="hover:text-purple-400 transition">CONTACT</a>
+      <a href="/about.html" class="hover:text-purple-400 transition">ABOUT</a>
+      <!-- Services Dropdown -->
+      <div class="relative">
+        <button id="desktop-services-btn" class="flex items-center hover:text-purple-400 transition focus:outline-none">
+          SERVICES
+          <svg id="desktop-arrow-down" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+          <svg id="desktop-arrow-up" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+        <div id="desktop-services-dropdown" class="absolute hidden bg-black bg-opacity-90 mt-2 py-2 w-48 rounded shadow-lg">
+          <a href="/corporateEvent.html" class="block px-4 py-2 text-white hover:text-purple-400 transition">Corporate Events</a>
+          <a href="/weddingEvent.html" class="block px-4 py-2 text-white hover:text-purple-400 transition">Wedding Events</a>
+        </div>
+      </div>
+      <a href="/contact.html" class="hover:text-purple-400 transition">CONTACT</a>
     </div>
   </nav>
+  
 
   <!-- Mobile Nav -->
-  <div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-black bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
-    <a href="/index.html" class="block hover:text-purple-400">HOME</a>
-    <a href="#" class="block hover:text-purple-400">ABOUT</a>
-    <a href="#" class="block hover:text-purple-400">SERVICES</a>
-    <a href="#" class="block hover:text-purple-400">CONTACT</a>
-  </div>
+<!-- Mobile Nav -->
+<div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-black bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
+<a href="/index.html" class="block hover:text-purple-400">HOME</a>
+<a href="#" class="block hover:text-purple-400">ABOUT</a>
+<!-- Mobile Services Dropdown -->
+<div class="relative">
+<button id="mobile-services-btn" class="block hover:text-purple-400 w-full">SERVICES</button>
+<div id="mobile-services-dropdown" class="hidden bg-black bg-opacity-95 py-2 w-full">
+<a href="/corporateEvent.html" class="block py-2 hover:text-purple-400">Corporate Events</a>
+<a href="/howitWorks.html" class="block py-2 hover:text-purple-400">Wedding Events</a>
+</div>
+</div>
+<a href="/contact.html" class="block hover:text-purple-400">CONTACT</a>
+</div>
 
   <main>
     <!-- Page 1 -->

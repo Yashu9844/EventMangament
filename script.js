@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   coursel();
   setupMobileMenu();
   setupModal();
-
+  setupDropdowns();
   // ScrollCue initialization (only if needed)
   if (typeof scrollCue !== 'undefined') {
     scrollCue.init({
@@ -588,3 +588,48 @@ function aboutUsAnimation(){
 }
 
 aboutUsAnimation();
+
+
+// Add this to your existing JavaScript code
+function setupDropdowns() {
+  // Desktop services dropdown
+  const desktopServicesBtn = document.getElementById('desktop-services-btn');
+  const desktopServicesDropdown = document.getElementById('desktop-services-dropdown');
+  const desktopArrowDown = document.getElementById('desktop-arrow-down');
+  const desktopArrowUp = document.getElementById('desktop-arrow-up');
+
+  if (desktopServicesBtn && desktopServicesDropdown) {
+    desktopServicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      desktopServicesDropdown.classList.toggle('hidden');
+      desktopArrowDown.classList.toggle('hidden');
+      desktopArrowUp.classList.toggle('hidden');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', () => {
+      desktopServicesDropdown.classList.add('hidden');
+      desktopArrowDown.classList.remove('hidden');
+      desktopArrowUp.classList.add('hidden');
+    });
+  }
+
+  // Mobile services dropdown
+  const mobileServicesBtn = document.getElementById('mobile-services-btn');
+  const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');
+
+  if (mobileServicesBtn && mobileServicesDropdown) {
+    mobileServicesBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      mobileServicesDropdown.classList.toggle('hidden');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', () => {
+      mobileServicesDropdown.classList.add('hidden');
+    });
+  }
+}
+
+// Then add this to your DOMContentLoaded event listener
