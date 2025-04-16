@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>wedding Event</title>
+
+  <title>Dream Weave - About Us</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .bg-transition {
+      transition: background-image 1s ease-in-out;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #8A2BE2, #FF69B4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+  <nav class="z-20 flex items-center justify-between px-6 py-4 md:px-[10vw] absolute w-full top-0 text-white">
+    <!-- Left: Logo + Hamburger -->
+    <div class="flex items-center gap-4">
+      <button id="menu-btn" class="text-white md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+    </div>
+
+    <!-- Right: Desktop Nav -->
+    <div class="hidden md:flex gap-10 text-sm font-montserrat">
+      <a href="/index.html" class="hover:text-purple-400 text-black transition">HOME</a>
+      <a href="#" class="hover:text-purple-400 transition text-black">ABOUT</a>
+      <a href="#" class="hover:text-purple-400 transition text-black">SERVICES</a>
+      <a href="#" class="hover:text-purple-400 transition text-black">CONTACT</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-black bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
+    <a href="/index.html" class="block hover:text-purple-400">HOME</a>
+    <a href="/assets/" class="block hover:text-purple-400 ">ABOUT</a>
+    <a href="#" class="block hover:text-purple-400">SERVICES</a>
+    <a href="#" class="block hover:text-purple-400">CONTACT</a>
+  </div>
+    
+    <main>
+
+      <section class="relative py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 opacity-30"></div>
+        
+        <!-- Animated Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div id="bubbles"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 opacity-0" id="main-title">
+              About <span class="gradient-text">Dream Weave</span>
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto opacity-0" id="subtitle">
+              Turning your dreams into unforgettable events, one celebration at a time.
+            </p>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Our Story Section -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0" id="story-image-container">
+              <div class="relative rounded-lg overflow-hidden shadow-xl">
+                <img src="/assets/w3.jpg" alt="Dream Weave Team" class="w-full h-auto opacity-0" id="story-image">
+                <div class="absolute inset-0 bg-purple-500 bg-opacity-20"></div>
+              </div>
+            </div>
+            
+            <div class="md:w-1/2 md:pl-12" id="story-content">
+              <h2 class="text-3xl font-bold mb-6 opacity-0" id="story-title">Our Story</h2>
+              <div class="space-y-4 opacity-0" id="story-text">
+                <p class="text-gray-700">Dream Weave was born from a passion for creating magical moments. Founded in 2020, our journey began when a group of event enthusiasts came together with a shared vision: to transform ordinary gatherings into extraordinary experiences.</p>
+                <p class="text-gray-700">What started as a small team planning local events has blossomed into a full-service event planning company serving clients nationwide. Our founders, with backgrounds in design, hospitality, and project management, bring diverse expertise to every event we create.</p>
+                <p class="text-gray-700">Today, Dream Weave stands as a testament to creativity, dedication, and the belief that every milestone deserves to be celebrated in style.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Our Values Section -->
+      <section class="py-16 bg-purple-50" id="values-section">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-16 opacity-0" id="values-title">Our Values</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Value Card 1 -->
+            <div class="bg-white rounded-lg shadow-lg p-8 transform transition duration-300 hover:-translate-y-2 opacity-0 value-card">
+              <div class="text-purple-600 text-4xl mb-4">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Passion</h3>
+              <p class="text-gray-600">We pour our hearts into every detail, ensuring each event reflects our unwavering commitment to excellence and creativity.</p>
+            </div>
+            
+            <!-- Value Card 2 -->
+            <div class="bg-white rounded-lg shadow-lg p-8 transform transition duration-300 hover:-translate-y-2 opacity-0 value-card">
+              <div class="text-purple-600 text-4xl mb-4">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Integrity</h3>
+              <p class="text-gray-600">Trust forms the foundation of our client relationships. We honor our commitments, maintain transparency, and deliver what we promise.</p>
+            </div>
+            
+            <!-- Value Card 3 -->
+            <div class="bg-white rounded-lg shadow-lg p-8 transform transition duration-300 hover:-translate-y-2 opacity-0 value-card">
+              <div class="text-purple-600 text-4xl mb-4">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Innovation</h3>
+              <p class="text-gray-600">We constantly push boundaries, embracing new ideas and technologies to create unique, memorable experiences for our clients.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Team Section -->
+  
+    
+      <!-- Contact CTA -->
+      <section class="py-20  text-black" id="cta-section">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold mb-6 opacity-0" id="cta-title">Ready to Create Magic Together?</h2>
+          <p class="text-lg mb-8 max-w-2xl mx-auto opacity-0" id="cta-text">
+            Let's turn your event dreams into reality. Our team is excited to hear your ideas and help you craft an unforgettable experience.
+          </p>
+          <button class="bg-white text-purple-600 font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-xl opacity-0" id="cta-button">
+            Contact Us Today
+          </button>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <footer class="relative bg-cover bg-center text-white" style="background-image: url('/assets/ww1.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+          
+            <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center">
+              <!-- Logo -->
+            <div class="flex   gap-4 justify-center mb-4">
+              
+              <a href="#">  <img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+              <h1 class="text-4xl font-bold mb-4 font-serif py-1">Dream Weave</h1>
+            </div>
+          
+              <!-- Description -->
+              <p class="max-w-3xl mx-auto text-sm sm:text-base leading-relaxed text-gray-300">
+                Planning a full event has never been easier! Dream Weave Event Management, based in India, offers a wide range of services to make your events stress-free and memorable. From corporate events to destination weddings, we’ve got it all covered. Whether you’re planning a wedding or a celebration, we are here to help.
+              </p>
+          
+              <!-- Social Icons -->
+              <div class="flex justify-center space-x-6 mt-6 text-white text-xl">
+                <a href="#"><i class="fab fa-instagram hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-youtube hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-facebook hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-linkedin hover:text-purple-400"></i></a>
+                <a href="#"><i class="fab fa-twitter hover:text-purple-400"></i></a>
+              </div>
+          
+              <!-- Links Section -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-12 text-left text-sm text-gray-300 justify-center">
+                <!-- Quick Links -->
+                <div class="text-center sm:text-left">
+                  <h2 class="text-white font-semibold text-lg mb-4">QUICK LINKS</h2>
+                  <ul class="space-y-2">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Venues</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </div>
+          
+                <!-- Services -->
+                <div class="text-center sm:text-left">
+                  <h2 class="text-white font-semibold text-lg mb-4">SERVICES</h2>
+                  <ul class="space-y-2">
+                    <li><a href="#">Corporate Events</a></li>
+                    <li><a href="#">Wedding Planner</a></li>
+                    <li><a href="#">Music & Entertainment</a></li>
+                    <li><a href="#">Private Parties</a></li>
+                    <li><a href="#">Destination Wedding</a></li>
+                  </ul>
+                </div>
+          
+                <!-- Contact Info -->
+                <div class="text-center sm:text-left">
+                  <h2 class="text-white font-semibold text-lg mb-4">CONTACT INFO</h2>
+                  <ul class="space-y-3">
+                    <li>
+                      <span class="block">Dream Weave Events</span>
+                      <span>1st Floor, MG Road, Bangalore, Karnataka 560001</span>
+                    </li>
+                    <li>
+                      <span class="block">Rathi Plaza, Anna Nagar</span>
+                      <span>Chennai, Tamil Nadu 600040</span>
+                    </li>
+                    <li>
+                      <span class="block">New Bel Road, Rajajinagar</span>
+                      <span>Hyderabad, Telangana 500081</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          
+              <!-- Bottom -->
+              <div class="mt-12 border-t border-gray-600 pt-6 text-gray-400 text-sm">
+                © 2025 Dream Weave. All rights reserved.
+              </div>
+            </div>
+          </footer>
+
+
+
+
+
+          
+</main>
+<script src="script.js">
+   
+</script>
+</body>
+</html>

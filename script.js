@@ -1,4 +1,3 @@
-// Carousel function
 function coursel() {
   const images = [
     'assets/w6.jpg',
@@ -265,3 +264,327 @@ function teamIntroAnimation() {
   });
 }
 teamIntroAnimation();
+
+
+function aboutUsanimation(){
+  // Animation for About Us section
+document.addEventListener('DOMContentLoaded', function() {
+  // Elements to animate
+  const animateElements = document.querySelectorAll('.animate-on-scroll');
+  
+  // Animation options
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2
+  };
+  
+  // Intersection Observer callback
+  const animateOnScroll = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = el.dataset.delay || 0;
+        
+        setTimeout(() => {
+          el.classList.add('animated');
+          // Remove observer after animation
+          observer.unobserve(el);
+        }, delay);
+      }
+    });
+  };
+  
+  // Create observer
+  const observer = new IntersectionObserver(animateOnScroll, options);
+  
+  // Observe all elements
+  animateElements.forEach(el => {
+    observer.observe(el);
+  });
+  
+  // Parallax effect for decorative elements
+  window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    
+    // Apply parallax to image decorative elements
+    const decorElements = document.querySelectorAll('.decor-element');
+    decorElements.forEach(el => {
+      const speed = el.dataset.speed || 0.1;
+      el.style.transform = `translateY(${scrollPosition * speed}px)`;
+    });
+    
+    // Stats counter animation when in view
+    const counterSection = document.querySelector('.stats-section');
+    if (counterSection && isElementInViewport(counterSection) && !counterSection.classList.contains('counted')) {
+      counterSection.classList.add('counted');
+      animateCounters();
+    }
+  });
+  
+  // Counter animation for stats
+  function animateCounters() {
+    const counters = document.querySelectorAll('.counter-value');
+    const speed = 200;
+    
+    counters.forEach(counter => {
+      const target = +counter.dataset.target;
+      const count = +counter.innerText;
+      const increment = target / speed;
+      
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(() => animateCounters(), 1);
+      } else {
+        counter.innerText = target;
+      }
+    });
+  }
+  
+  // Helper function to check if element is in viewport
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+  
+  // Image tilt effect on hover
+  const tiltImage = document.querySelector('.tilt-effect');
+  if (tiltImage) {
+    tiltImage.addEventListener('mousemove', function(e) {
+      const boundingRect = this.getBoundingClientRect();
+      const mouseX = e.clientX - boundingRect.left;
+      const mouseY = e.clientY - boundingRect.top;
+      
+      const centerX = boundingRect.width / 2;
+      const centerY = boundingRect.height / 2;
+      
+      const tiltX = (mouseX - centerX) / centerX * 10;
+      const tiltY = (mouseY - centerY) / centerY * 10;
+      
+      this.style.transform = `perspective(1000px) rotateX(${-tiltY}deg) rotateY(${tiltX}deg)`;
+    });
+    
+    tiltImage.addEventListener('mouseleave', function() {
+      this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    });
+  }
+});
+}
+
+
+
+function aboutUsAnimation(){
+  function createBubbles() {
+    const bubbles = document.getElementById('bubbles');
+    const colors = ['#8A2BE2', '#FF69B4', '#9370DB', '#FF1493', '#BA55D3'];
+    
+    for (let i = 0; i < 20; i++) {
+      const bubble = document.createElement('div');
+      const size = Math.random() * 100 + 50;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      bubble.style.position = 'absolute';
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.borderRadius = '50%';
+      bubble.style.backgroundColor = color;
+      bubble.style.opacity = '0.1';
+      bubble.style.left = `${Math.random() * 100}%`;
+      bubble.style.top = `${Math.random() * 100}%`;
+      bubble.style.transform = 'scale(0)';
+      
+      bubbles.appendChild(bubble);
+      
+      gsap.to(bubble, {
+        scale: 1,
+        duration: Math.random() * 3 + 2,
+        ease: 'power1.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: Math.random() * 2
+      });
+      
+      gsap.to(bubble, {
+        x: Math.random() * 100 - 50,
+        y: Math.random() * 100 - 50,
+        duration: Math.random() * 20 + 10,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: Math.random() * 2
+      });
+    }
+  }
+  
+  // Sparkle effect on hover for buttons
+  function createSparkleEffect() {
+    const button = document.getElementById('cta-button');
+    
+    button.addEventListener('mousemove', (e) => {
+      const x = e.clientX - button.getBoundingClientRect().left;
+      const y = e.clientY - button.getBoundingClientRect().top;
+      
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      button.appendChild(sparkle);
+      
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+      
+      gsap.to(sparkle, {
+        scale: Math.random() * 2 + 1,
+        opacity: 0.7,
+        duration: 0.3,
+        ease: 'power1.out',
+        onComplete: () => {
+          gsap.to(sparkle, {
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power1.in',
+            onComplete: () => {
+              sparkle.remove();
+            }
+          });
+        }
+      });
+    });
+  }
+  
+  // Initialize animations when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    createBubbles();
+    createSparkleEffect();
+    
+    // Hero section animations
+    gsap.to('#main-title', {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power2.out',
+      delay: 0.2
+    });
+    
+    gsap.to('#subtitle', {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power2.out',
+      delay: 0.6
+    });
+    
+    // Story section animations
+    ScrollTrigger.create({
+      trigger: '#story-image-container',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to('#story-image', {
+          opacity: 1,
+          duration: 1.2,
+          ease: 'power2.out'
+        });
+      }
+    });
+    
+    ScrollTrigger.create({
+      trigger: '#story-content',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to('#story-title', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+        
+        gsap.to('#story-text', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 0.3
+        });
+      }
+    });
+    
+    // Values section animations
+    ScrollTrigger.create({
+      trigger: '#values-section',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to('#values-title', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+        
+        gsap.to('.value-card', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          stagger: 0.2
+        });
+      }
+    });
+    
+    // Team section animations
+    ScrollTrigger.create({
+      trigger: '#team-section',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to('#team-title', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+        
+        gsap.to('.team-member', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          stagger: 0.15
+        });
+      }
+    });
+    
+    // CTA section animations
+    ScrollTrigger.create({
+      trigger: '#cta-section',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to('#cta-title', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+        
+        gsap.to('#cta-text', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 0.2
+        });
+        
+        gsap.to('#cta-button', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 0.4
+        });
+      }
+    });
+  });
+}
+
+aboutUsAnimation();

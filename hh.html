@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Project</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="./dist/output.css" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://unpkg.com/scrollcue/dist/scrollCue.css" />
+    <script src="https://unpkg.com/scrollcue"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .bg-transition {
+            transition: background-image 1s ease-in-out;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+            font-weight: 700;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] text-white">
+
+    <!-- Carousel Banner -->
+    <main>
+        <div class="page1 min-h-screen w-full bg-[#f9f5ff] relative">
+            <!-- Background Image -->
+            <div id="carousel" class="relative h-[90vh] w-full bg-cover bg-center bg-transition" style="background-image: url('assets/w3.jpg');">
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-[#6a3093] bg-opacity-60"></div>
+    
+                <!-- Navbar -->
+                <nav class="z-20 flex items-center justify-between px-6 py-4 md:px-[10vw] absolute w-full top-0 text-white">
+                    <!-- Left: Logo + Hamburger -->
+                    <div class="flex items-center gap-4">
+                        <button id="menu-btn" class="text-white md:hidden focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                        <a href="#"><img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+                    </div>
+                
+                    <!-- Right: Desktop Nav -->
+                    <div class="hidden md:flex gap-10 text-sm font-montserrat">
+                        <a href="/index.html" class="hover:text-[#e83e8c] transition">HOME</a>
+                        <a href="/about.html" class="hover:text-[#e83e8c] transition">ABOUT</a>
+                        <!-- Services Dropdown -->
+                        <div class="relative">
+                            <button id="desktop-services-btn" class="flex items-center hover:text-[#e83e8c] transition focus:outline-none">
+                                SERVICES
+                                <svg id="desktop-arrow-down" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                                <svg id="desktop-arrow-up" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                                </svg>
+                            </button>
+                            <div id="desktop-services-dropdown" class="absolute hidden bg-[#6a3093] bg-opacity-90 mt-2 py-2 w-48 rounded shadow-lg">
+                                <a href="/corporateEvent.html" class="block px-4 py-2 text-white hover:text-[#e83e8c] transition">Corporate Events</a>
+                                <a href="/weddingEvent.html" class="block px-4 py-2 text-white hover:text-[#e83e8c] transition">Wedding Events</a>
+                            </div>
+                        </div>
+                        <a href="/contact.html" class="hover:text-[#e83e8c] transition">CONTACT</a>
+                    </div>
+                </nav>
+            
+                <!-- Mobile Nav -->
+                <div id="mobile-menu" class="hidden md:hidden absolute top-[80px] left-0 w-full bg-[#6a3093] bg-opacity-90 text-white text-center py-4 space-y-4 z-30">
+                    <a href="/index.html" class="block hover:text-[#e83e8c]">HOME</a>
+                    <a href="#" class="block hover:text-[#e83e8c]">ABOUT</a>
+                    <!-- Mobile Services Dropdown -->
+                    <div class="relative">
+                        <a href="#" id="mobile-services-btn" class="block hover:text-[#e83e8c]">SERVICES</a>
+                        <div id="mobile-services-dropdown" class="hidden bg-[#6a3093] bg-opacity-95 py-2 w-full">
+                            <a href="/corporateEvent.html" class="block py-2 hover:text-[#e83e8c]">Corporate Events</a>
+                            <a href="/howitWorks.html" class="block py-2 hover:text-[#e83e8c]">Wedding Events</a>
+                        </div>
+                    </div>
+                    <a href="/contact.html" class="block hover:text-[#e83e8c]">CONTACT</a>
+                </div>
+    
+                <!-- Main Content (Left aligned on all screens) -->
+                <div class="relative z-10 flex flex-col items-start justify-center h-full px-6 sm:px-12 md:px-[10.3vw] text-left">
+                    <p class="text-sm sm:text-base md:text-lg text-[#d1c4e9] mb-2 px-1">From Concept to Celebration — We Do It All</p>
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold py-2">Your Event, Our Expertise</h1>
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold py-2">Crafting Unforgettable Experiences</h1>
+                    <p class="text-xs sm:text-sm md:text-base text-[#d1c4e9] mt-2 px-1">Book With the Best — Dream Event Management</p>
+    
+                    <!-- Social Icons (left-aligned) -->
+                    <div class="flex gap-4 mt-6 text-xl sm:text-2xl text-white px-2">
+                        <a href="#"><i class="fab fa-instagram hover:text-[#e83e8c]"></i></a>
+                        <a href="#"><i class="fab fa-youtube hover:text-[#e83e8c]"></i></a>
+                        <a href="#"><i class="fab fa-facebook hover:text-[#e83e8c]"></i></a>
+                        <a href="#"><i class="fab fa-linkedin hover:text-[#e83e8c]"></i></a>
+                        <a href="#"><i class="fab fa-twitter hover:text-[#e83e8c]"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- services -->
+        <section class="py-20 bg-[#f9f5ff] text-left">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#9c27b0] font-semibold tracking-tight">
+                    Our Services
+                </h2>
+                
+                <p class="text-4xl font-bold font-montserrat text-[#4a148c] mb-4 scrollcue-up">Services by DreamWeave Event Management</p>
+                <p class="text-[#6a1b9a] mb-12 max-w-3xl scrollcue-up">
+                    We create unforgettable events — from dreamy weddings to corporate summits. Explore our services below:
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <a href="/corporateEvent.html">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group scrollcue-fadeup">
+                            <div class="overflow-hidden">
+                                <img 
+                                    src="/assets/un4.jpg" 
+                                    class="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110" 
+                                    alt="Corporate"
+                                />
+                            </div>
+                            <div class="p-6 text-left">
+                                <h3 class="text-lg font-bold text-[#6a3093] mb-2">Corporate Events</h3>
+                                <p class="text-sm text-[#9c27b0]">From team-building to conferences, we deliver corporate experiences with precision.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group scrollcue-fadeup">
+                        <div class="overflow-hidden">
+                            <img 
+                                src="/assets/un2.jpg" 
+                                class="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110" 
+                                alt="Weddings"
+                            />
+                        </div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-lg font-bold text-[#6a3093] mb-2">Wedding Planning</h3>
+                            <p class="text-sm text-[#9c27b0]">Make your big day magical with end-to-end personalized planning and decor.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group scrollcue-fadeup">
+                        <div class="overflow-hidden">
+                            <img 
+                                src="/assets/un1.jpg" 
+                                class="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110" 
+                                alt="Destination"
+                            />
+                        </div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-lg font-bold text-[#6a3093] mb-2">Destination Weddings</h3>
+                            <p class="text-sm text-[#9c27b0]">Celebrate your love in paradise. We manage all aspects of your dream wedding.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group scrollcue-fadeup">
+                        <div class="overflow-hidden">
+                            <img 
+                                src="/assets/wedding season.jpeg" 
+                                class="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110" 
+                                alt="Food and Drinks"
+                            />
+                        </div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-lg font-bold text-[#6a3093] mb-2">Food & Drinks</h3>
+                            <p class="text-sm text-[#9c27b0]">From delicious buffets to refreshing beverages, we serve flavors that make every celebration memorable.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group scrollcue-fadeup">
+                        <div class="overflow-hidden">
+                            <img 
+                                src="/assets/un5.jpg" 
+                                class="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110" 
+                                alt="Private"
+                            />
+                        </div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-lg font-bold text-[#6a3093] mb-2">Private Parties</h3>
+                            <p class="text-sm text-[#9c27b0]">Birthdays, anniversaries, or surprise bashes — we handle it all effortlessly.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group scrollcue-fadeup">
+                        <div class="overflow-hidden">
+                            <img 
+                                src="/assets/camera.jpeg" 
+                                class="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110" 
+                                alt="Photos and Videos"
+                            />
+                        </div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-lg font-bold text-[#6a3093] mb-2">Photos & Videos</h3>
+                            <p class="text-sm text-[#9c27b0]">Capture every special moment with our professional photography and videography services.</p>
+                        </div>
+                    </div>     
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 2 -->
+        <div class="page2 w-full bg-[#f9f5ff] relative py-[2vw] pb-[20px]">
+            <div class="container mx-auto px-[8vw] py-4">
+                <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#9c27b0] font-semibold tracking-tight">
+                    What People Are Saying
+                </p>
+                
+                <h2 class="text-4xl font-bold text-[#4a148c] font-montserrat py-4">Hear from those who've experienced our service firsthand.</h2>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="w-full max-w-7xl mx-auto bg-[#e8f5e9] rounded-xl py-10 px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-xl shadow-md p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-yellow-500 text-lg">★★★★★</div>
+                            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Google" class="w-5 h-5" />
+                        </div>
+                        <p class="text-sm text-gray-800 leading-tight">
+                            Melodia Events made my sister's engagement memorable. Great planning and execution!
+                        </p>
+                        <div class="flex items-center gap-3 pt-2">
+                            <div class="w-8 h-8 bg-[#e83e8c] text-white font-bold flex items-center justify-center rounded-full">A</div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Anjali Mehra</p>
+                                <p class="text-xs text-gray-500">2023-10-12</p>
+                            </div>
+                        </div>
+                    </div>
+  
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-xl shadow-md p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-yellow-500 text-lg">★★★★★</div>
+                            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Google" class="w-5 h-5" />
+                        </div>
+                        <p class="text-sm text-gray-800 leading-tight">
+                            We hired them for a corporate event. Professional and creative team!
+                        </p>
+                        <div class="flex items-center gap-3 pt-2">
+                            <div class="w-8 h-8 bg-[#9c27b0] text-white font-bold flex items-center justify-center rounded-full">R</div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Rahul Bansal</p>
+                                <p class="text-xs text-gray-500">2024-01-20</p>
+                            </div>
+                        </div>
+                    </div>
+  
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-xl shadow-md p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-yellow-500 text-lg">★★★★★</div>
+                            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Google" class="w-5 h-5" />
+                        </div>
+                        <p class="text-sm text-gray-800 leading-tight">
+                            Our baby shower was beautifully handled by them. Loved the decorations!
+                        </p>
+                        <div class="flex items-center gap-3 pt-2">
+                            <div class="w-8 h-8 bg-[#6a3093] text-white font-bold flex items-center justify-center rounded-full">S</div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Sneha Reddy</p>
+                                <p class="text-xs text-gray-500">2023-06-05</p>
+                            </div>
+                        </div>
+                    </div>
+  
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-xl shadow-md p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-yellow-500 text-lg">★★★★★</div>
+                            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Google" class="w-5 h-5" />
+                        </div>
+                        <p class="text-sm text-gray-800 leading-tight">
+                            Melodia handled our college fest. It was a hit thanks to their team.
+                        </p>
+                        <div class="flex items-center gap-3 pt-2">
+                            <div class="w-8 h-8 bg-[#e83e8c] text-white font-bold flex items-center justify-center rounded-full">K</div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Karan Kapoor</p>
+                                <p class="text-xs text-gray-500">2024-02-18</p>
+                            </div>
+                        </div>
+                    </div>
+  
+                    <!-- Card 5 -->
+                    <div class="bg-white rounded-xl shadow-md p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-yellow-500 text-lg">★★★★★</div>
+                            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Google" class="w-5 h-5" />
+                        </div>
+                        <p class="text-sm text-gray-800 leading-tight">
+                            They arranged a surprise party for my husband. Every detail was perfect.
+                        </p>
+                        <div class="flex items-center gap-3 pt-2">
+                            <div class="w-8 h-8 bg-[#9c27b0] text-white font-bold flex items-center justify-center rounded-full">N</div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Neha Singh</p>
+                                <p class="text-xs text-gray-500">2023-12-03</p>
+                            </div>
+                        </div>
+                    </div>
+  
+                    <!-- Card 6 -->
+                    <div class="bg-white rounded-xl shadow-md p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-yellow-500 text-lg">★★★★★</div>
+                            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Google" class="w-5 h-5" />
+                        </div>
+                        <p class="text-sm text-gray-800 leading-tight">
+                            One of the best wedding planners in Kerala. Highly recommend them!
+                        </p>
+                        <div class="flex items-center gap-3 pt-2">
+                            <div class="w-8 h-8 bg-[#6a3093] text-white font-bold flex items-center justify-center rounded-full">V</div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Vikram Joshi</p>
+                                <p class="text-xs text-gray-500">2023-08-26</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="min-h-screen flex items-center justify-center bg-[#f9f5ff] p-6">
+            <div class="flex flex-col md:flex-row w-full max-w-7xl bg-white shadow-2xl rounded-3xl overflow-hidden">
+      
+                <!-- Left: Contact Info -->
+                <div class="md:w-1/2 p-10 bg-white">
+                    <h2 class="text-3xl font-bold text-[#4a148c] mb-4">Enquiry Us</h2>
+                    <p class="text-[#6a1b9a] mb-6">
+                        Feel free to use the form or drop us an email. Old-fashioned phone calls work too.
+                    </p>
+      
+                    <div class="space-y-4 text-[#6a3093]">
+                        <div class="flex items-center gap-3">
+                            <span class="text-[#e83e8c] text-xl">📞</span>
+                            <span>484.324.2400</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[#9c27b0] text-xl">📧</span>
+                            <span>info@mediaproper.com</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-[#6a3093] text-xl">📍</span>
+                            <div>
+                                <p>15 West 3rd St.</p>
+                                <p>Media, Pa. 19063</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      
+                <!-- Right: Contact Form -->
+                <div class="md:w-1/2 bg-white p-10">
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="First Name" class="p-3 border-2 border-[#d1c4e9] focus:border-[#9c27b0] rounded-lg w-full outline-none" />
+                            <input type="text" placeholder="Last Name" class="p-3 border-2 border-[#d1c4e9] focus:border-[#9c27b0] rounded-lg w-full outline-none" />
+                        </div>
+                        <input type="email" placeholder="Email" class="p-3 border-2 border-[#d1c4e9] focus:border-[#9c27b0] rounded-lg w-full outline-none" />
+                        <input type="tel" placeholder="Phone (optional)" class="p-3 border-2 border-[#d1c4e9] focus:border-[#9c27b0] rounded-lg w-full outline-none" />
+                        <textarea placeholder="Your Message" class="p-3 border-2 border-[#d1c4e9] focus:border-[#9c27b0] rounded-lg w-full h-32 outline-none"></textarea>
+                        <button class="bg-gradient-to-r from-[#9c27b0] to-[#e83e8c] text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+      
+        <footer class="relative bg-cover bg-center text-white" style="background-image: url('/assets/ww1.jpg');">
+            <div class="absolute inset-0 bg-[#4a148c] bg-opacity-70"></div>
+      
+            <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center">
+                <!-- Logo -->
+                <div class="flex gap-4 justify-center mb-4">
+                    <a href="#"><img src="assets/logo.png" alt="Logo" class="h-[50px] w-auto rounded-full" /></a>
+                    <h1 class="text-4xl font-bold mb-4 font-serif py-1">Dream Weave</h1>
+                </div>
+      
+                <!-- Description -->
+                <p class="max-w-3xl mx-auto text-sm sm:text-base leading-relaxed text-[#d1c4e9]">
+                    Planning a full event has never been easier! Dream Weave Event Management, based in India, offers a wide range of services to make your events stress-free and memorable. From corporate events to destination weddings, we've got it all covered. Whether you're planning a wedding or a celebration, we are here to help.
+                </p>
+      
+                <!-- Social Icons -->
+                <div class="flex justify-center space-x-6 mt-6 text-white text-xl">
+                    <a href="#"><i class="fab fa-instagram hover:text-[#e83e8c]"></i></a>
+                    <a href="#"><i class="fab fa-youtube hover:text-[#e83e8c]"></i></a>
+                    <a href="#"><i class="fab fa-facebook hover:text-[#e83e8c]"></i></a>
+                    <a href="#"><i class="fab fa-linkedin hover:text-[#e83e8c]"></i></a>
+                    <a href="#"><i class="fab fa-twitter hover:text-[#e83e8c]"></i></a>
+                </div>
+      
+                <!-- Links Section -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-12 text-left text-sm text-[#d1c4e9] justify-center">
+                    <!-- Quick Links -->
+                    <div class="text-center sm:text-left">
+                        <h2 class="text-white font-semibold text-lg mb-4">QUICK LINKS</h2>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-[#e83e8c]">Home</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">About</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">Venues</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">Gallery</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">Contact</a></li>
+                        </ul>
+                    </div>
+      
+                    <!-- Services -->
+                    <div class="text-center sm:text-left">
+                        <h2 class="text-white font-semibold text-lg mb-4">SERVICES</h2>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-[#e83e8c]">Corporate Events</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">Wedding Planner</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">Music & Entertainment</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">Private Parties</a></li>
+                            <li><a href="#" class="hover:text-[#e83e8c]">Destination Wedding</a></li>
+                        </ul>
+                    </div>
+      
+                    <!-- Contact Info -->
+                    <div class="text-center sm:text-left">
+                        <h2 class="text-white font-semibold text-lg mb-4">CONTACT INFO</h2>
+                        <ul class="space-y-3">
+                            <li>
+                                <span class="block">Dream Weave Events</span>
+                                <span>1st Floor, MG Road, Bangalore, Karnataka 560001</span>
+                            </li>
+                            <li>
+                                <span class="block">Rathi Plaza, Anna Nagar</span>
+                                <span>Chennai, Tamil Nadu 600040</span>
+                            </li>
+                            <li>
+                                <span class="block">New Bel Road, Rajajinagar</span>
+                                <span>Hyderabad, Telangana 500081</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+      
+                <!-- Bottom -->
+                <div class="mt-12 border-t border-[#9c27b0] pt-6 text-[#d1c4e9] text-sm">
+                    © 2025 Dream Weave. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </main>
+  
+    <script src="script.js"></script>
+</body>
+</html>
